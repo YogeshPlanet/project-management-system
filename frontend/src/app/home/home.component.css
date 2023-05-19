@@ -1,0 +1,351 @@
+/* for home page logo setup on background */
+/* .constant-background {
+    position: relative;
+}
+
+#project-logo {
+    position: absolute;
+    top: 20px;
+    right: 600px;
+}
+
+#dashboard-heading {
+    color: white;
+    position: absolute;
+    left: 44px;
+    top: 40px;
+} */
+
+#project-logo {
+    position: relative;
+    bottom: 135px;
+    left: 615px;
+    width: 60px;
+    z-index: 99;
+}
+
+#dashboard-heading {
+    display: inline-block;
+    position: relative;
+    bottom: 104px;
+    left: 90px;
+    color: white;
+}
+
+#header-background {
+    position: relative;
+    left: 58px;
+}
+
+#project-card {
+    position: relative;
+    bottom: 116px;
+    left: 40px;
+}
+
+.card {
+    box-shadow: 0px 0px 6px #126dc246;
+    width: 35rem; 
+    height: 54vh;
+}
+
+.chart {
+   padding: 20px;
+}
+
+.data-chart {
+    position: relative;
+    bottom: 30px;
+}
+
+.chart-container {
+    position: relative; 
+    height:44vh; 
+    width:40vw;
+    background-color: white;
+}
+
+.sidebar-menu {
+    position: relative;
+    top: 250px;
+    right: 15px;
+    list-style-type: none;
+    cursor: pointer;
+}
+
+.side-icon {
+    margin-bottom: 40px;
+    list-style-type: none;
+    transition: 0.16s opacity;
+}
+
+.side-icon:active {
+    opacity: 0.7;
+}
+
+
+
+#logout-logo {
+    position: relative;
+    top: 350px;
+    right: 15px;
+    list-style-type: none;
+    cursor: pointer;
+}
+
+.side-bar {
+    position: fixed; 
+    top: 0px; 
+    bottom: 0px; 
+    background-color: white;
+    z-index: 99;
+}
+
+
+
+.graph-heading {
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.wrapper {
+    max-width: 1000px;
+    display: flex;
+    position: relative;
+    left: 70px;
+    bottom: 115px;
+    column-gap: 23px;
+}
+
+.wrapper .item {
+    right: 20px;
+    min-width: 216px;
+    height: 90px;
+    line-height: 40px;
+    text-align: start;
+    background-color: white;
+    border-left: 5px solid #0bc8e7;
+    border-radius: 4px;
+}
+
+.item h4 {
+    margin: 0px;
+    margin-left: 10px;
+}
+
+.item p {
+    margin: 0px;
+    margin-left: 10px;
+}
+
+#horizontal-line {
+    position: relative;
+    bottom: -145px;
+    color: white;
+    left: -15px;
+    border-bottom: 2px solid #6c757d;
+}
+
+.logoutimg {
+    position: relative;
+}
+
+.logout-click {
+    position: absolute;
+    bottom: 3rem;
+    left: 20rem;
+}
+
+@media only screen and (min-width:414px) {
+    .logoutimg {
+        display: none;
+    }
+}
+
+/* media querys */
+
+@media only screen and (max-width: 414px) {
+    #project-card {
+        position: relative;
+        bottom: 0px;
+    }
+
+    #dashboard-heading {
+        bottom: 38px;
+        left: 20px;
+    }
+
+    .wrapper {
+        position: relative;
+        left: -5px;
+        bottom: 10px;
+        overflow-x: auto;
+        border: none;
+    }
+
+    .wrapper .item {
+        min-width: 120px;
+        box-shadow: 0px 0px 4px darkgrey;
+        height: 90px;
+        padding-top: 5px;
+        border-radius: 4px;
+    }
+
+    .side-bar[_ngcontent-ng-c3837434647] {
+        position: relative;
+        top: 0px;
+        bottom: 0px;
+        background-color: white;
+        z-index: 99;
+    }
+
+    #header-background {
+        position: relative;
+        left: 0px;
+        height: 8vh;
+    }
+
+    .graph-heading {
+        padding-left: 0px;
+        margin-top: 20px;
+    }
+
+    .side-icon {
+        margin-bottom: 0px;
+    }
+
+    .row {
+    margin-right: calc(var(--bs-gutter-x) * -.0);
+    margin-left: calc(var(--bs-gutter-x) * -.0);
+    }
+
+
+.container-fluid {
+    padding-right: var(--bs-gutter-x,.0rem);
+}
+}
+
+@media only screen and (max-width: 375px) {
+    .row {
+        margin-right: calc(var(--bs-gutter-x) * -.0);
+        margin-left: calc(var(--bs-gutter-x) * -.0);
+        }
+}
+
+@media only screen and (max-width: 768px) {
+    .wrapper[_ngcontent-ng-c788896766] {
+        position: relative;
+        bottom: 0px;
+    }    
+}
+
+/* mobilemenu-bar */
+
+#mobile-menubar {
+    background-color: white;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-radius: 50px;
+}
+
+@media only screen and (min-width: 576px) {
+    #mobile-menubar {
+        display:none;
+    }
+
+   
+}
+
+/* media query for chart */
+
+@media only screen and (max-width: 320px) {
+
+    .chart-container {
+        width: 50vw;
+    }
+
+    .card {
+        width: 18rem;
+        box-shadow: 0px 0px 2px grey;
+    }
+
+    .data-chart[_ngcontent-ng-c1322139925] {
+        position: relative;
+        bottom: 0px;
+        margin-bottom: 24px;
+       }
+
+       .logout-click[_ngcontent-ng-c3283720951] {
+        position: absolute;
+        bottom: 2.5rem;
+        left: 18rem;
+    }
+    
+}
+
+
+@media only screen and (max-width: 375px) {
+    .card{
+        width: 21rem;
+   }
+
+   .chart-container {
+    width: 50vw;
+   }
+
+   #MyChart {
+    height: 0px;
+    width: 0px;
+   }
+
+   .data-chart {
+    position: relative;
+    bottom: 0px;
+    margin-bottom: 24px;
+   }
+
+   .data-chart[_ngcontent-ng-c1322139925] {
+    position: relative;
+    bottom: 0px;
+   }
+}
+
+@media only screen and (max-width: 414px) {
+    .card{
+        width:21rem;
+        box-shadow: 0px 0px 2px #126dc246;
+   }
+
+   .chart-container {
+    width: 77vw;
+   }
+
+   #MyChart {
+    height: 0px;
+    width: 0px;
+   }
+
+   .data-chart[_ngcontent-ng-c1322139925] {
+    position: relative;
+    bottom: 0px;
+    margin-bottom: 24px;
+   }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

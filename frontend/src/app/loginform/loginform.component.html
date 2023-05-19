@@ -1,0 +1,74 @@
+
+<div class="front-page">
+    <div class="imgcontainer">
+      <img src="../assets/images/login-bg-1.png" class="img-fluid" alt="" id="login-background">
+      <img src="../assets/images/Oval.png" class="img-fluid" alt="" id="ovel-img">
+    </div>
+    <img src="../assets/images/Logo.png" class="img-fluid" alt="" id="company-logo">
+    <p class="project-name">Online Project Management</p>
+</div>
+    
+     
+    
+    
+    <div class="container-fluid">
+        <!-- speener -->
+     <div id="loading-speener">
+        <div class="spinner-border" role="status" *ngIf="loading">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+    
+        <div class="card login-form" style="width: 25rem;" *ngIf="!loading">
+        <div class="card-body">
+            <h5 class="card-title text-center">Log in to get started</h5>
+            <div class="card-text">
+                <form [formGroup]="loginForm" >
+                    <div class="form-group">
+                        <label for="exampleInputEmail1" class="login-labels">Email</label>
+                        <input type="email" formControlName="email" name = "emailid" class="form-control form-control-sm" id="Email"  aria-describedby="emailHelp">
+                    </div>
+                    <small *ngIf="loginForm.controls['email'].dirty && loginForm.hasError('required', 'email')" class="text-danger">*Email is required</small>
+
+                    <br>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1" class="login-labels">Password</label>
+                        <input [type]="type" formControlName="password" name = "password" class="form-control form-control-sm"  id="Password"> <img src="../assets/images/hide-password.png" (click)="hideShowPass()" class="img-fluid" id="hide-password" alt="">
+                        <span>  
+                        <a href="#" class="forget-password" >Forgot password?</a>
+                        </span>
+                    </div>
+                    <small *ngIf="loginForm.controls['password'].dirty && loginForm.hasError('required', 'password')" class="text-danger">*Password is required</small>
+
+                        <div class="text-center">
+                                <button (click)="onSubmit()" type="submit" class="btn btn-primary">Login</button>
+                    </div>
+
+          
+                </form>
+            </div>
+            
+        </div>
+
+    </div>
+
+     
+    
+    </div>
+
+     <div class="d-flex flex-row" id="errmessage">
+        <div class="text-danger" *ngIf="loginErrorMessage">
+            {{ loginErrorMessage }}
+        </div>
+    </div>
+
+  
+
+    
+    
+
+    
+
+    
+    
+    

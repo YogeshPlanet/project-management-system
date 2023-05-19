@@ -1,0 +1,221 @@
+
+<img src="../assets/images/Header-bg.png" class="img-fluid" id="header-background" alt="">
+<h5 id="dashboard-heading"> <img src="../assets/images/back arrow.png" (click)="gotoHome()"  [routerLink]="['home']" class="back-arrow img-fluid" alt=""> Project Listing</h5>
+<div class="logoutimg">
+    <img src="../assets/images/Logout.png" class="logout-click" (click)="signOut()" alt="">
+</div>
+
+
+
+    <div class="d-none d-md-block">
+       <img src="../assets/images/Logo.png" id="project-logo" class="img-fluid" alt="">
+    </div>
+
+    <div class="side-bar d-none d-sm-block">
+        <ul>
+            <div class="side-icon">
+            <li class="sidebar-menu"><img src="../assets/images/Dashboard.png" (click)="gotoHome()" class="img-fluid" alt=""></li>
+            </div>
+            <div class="side-icon">
+                <li class="sidebar-menu"><img src="../assets/images/Project-list.png" (click)="gotoList()" class="img-fluid" alt=""></li>
+            </div>
+            <div class="side-icon">
+                <li class="sidebar-menu"><img src="../assets/images/create-project.png" (click)="gotoCreateProject()" class="img-fluid" alt=""></li>
+            </div>
+            <div id="horizontal-line">line</div>
+            <div class="side-icon">
+                <li><img src="../assets/images/Logout.png" id="logout-logo" class="img-fluid" (click)="signOut()" alt=""></li>
+            </div>
+        </ul>
+    </div>
+
+
+
+
+
+
+    <div class="container">
+
+
+        <div class="card d-none d-sm-block" style="width: 74rem;">
+            <div class="table-features">
+                <div class="search-bar">
+                    <img src="../assets/images/search-icon.png" class="img-fluid" alt="" id="searchimg">
+                    <input class="search" type="search"  placeholder="Search" [(ngModel)]="searchKey" (keyup)="onSearch()">
+                </div>
+                <div class="sort">
+                  <span class="sort-label">Sort By:</span>
+                  <select [(ngModel)]="selectedSortOption" (change)="sortTable()" class="sort-select">
+                    <option value="projectNam">ProjectName</option>
+                    <option value="reasons">Reasons</option>
+                    <option value="type">Type</option>
+                    <option value="division">Division</option>
+                    <option value="category">Category</option>
+                    <option value="priority">Priority</option>
+                    <option value="department">Department</option>
+                    <option value="location">Location</option>
+                    <option value="status">Status</option>
+                  </select>
+
+                </div>
+                
+            </div>
+            
+
+        <table id="example" class="table" style="width:100%">
+            <thead class=table-light>
+                <tr>
+                    <th>Project Name</th>
+                    <th>Reason</th>
+                    <th>Type</th>
+                    <th>Division</th>
+                    <th>Category</th>
+                    <th>Priority</th>
+                    <th>Dept.</th>
+                    <th>Location</th>
+                    <th>Status</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let project of projectList | searchFilter:searchKey | paginate:{id: 'listTable-pagination', itemsPerPage:5, currentPage:page, totalItems:totalRecord}">
+                    <td id="projectName">{{project.projectName}} <br>
+                        <small class="project-date">{{project?.start_date_as_per_project_plan | date:'MMMM-dd, yyyy'}}</small>&nbsp; <span class="to">To</span>&nbsp; 
+                        <small class="project-date">{{project?.end_date_as_per_project_plan | date:'MMMM-dd, yyyy' }}</small>
+                    </td>
+                    <td class="project-data">{{project.reasons}}</td>
+                    <td class="project-data">{{project.type}}</td>
+                    <td class="project-data">{{project.division}}</td>
+                    <td class="project-data">{{project.category}}</td>
+                    <td class="project-data">{{project.priority}}</td>
+                    <td class="project-data">{{project.department}}</td>
+                    <td class="project-data">{{project.location}}</td>
+                    <td>{{project.status}}</td>
+                 
+                   <td>
+                    
+                        <div class="d-flex flex-row mb-3 justify-content-evenly">
+                          <div ><button type="button" (click)="updateStatus(project.id, project.projectName,project.reasons,project.type, project.division,project.category,project.priority,project.department,project.start_date_as_per_project_plan, project.end_date_as_per_project_plan, project.location ,project.status, 'Running')" class="btn" id="start-button">
+                            Start
+                          </button>
+                        </div>
+                          <div><button type="button" (click)="updateStatus(project.id, project.projectName,project.reasons,project.type, project.division,project.category,project.priority,project.department,project.start_date_as_per_project_plan, project.end_date_as_per_project_plan, project.location ,project.status, 'Closed')" class="btn" id="close-button">
+                            Close
+                          </button>
+                        </div>
+                          <div ><button type="button" (click)="updateStatus(project.id, project.projectName,project.reasons,project.type, project.division,project.category,project.priority,project.department,project.start_date_as_per_project_plan, project.end_date_as_per_project_plan, project.location ,project.status, 'Cancelled')" class="btn" id="cancel-button">
+                            Cancel
+                          </button>
+                        </div>
+                        </div>
+                
+                   </td>
+
+                </tr>
+
+            
+             
+            </tbody>
+          </table>
+            <div>
+                 <pagination-controls id="listTable-pagination" [maxSize]=5 [directionLinks]="true" (pageChange)="page=$event"></pagination-controls>
+            </div>
+    </div>
+  
+
+
+        <div class="allprojectdatarecord">
+          <div class="d-flex flex-row mb-4">
+            <div class="search-bar">
+                <img src="../assets/images/search-icon.png" class="img-fluid" alt="" id="searchimg">
+                <input class="search" type="search"  placeholder="Search" [(ngModel)]="searchKey" (keyup)="onSearch()">
+            </div>
+
+            <div class="sort">
+              <span class="sort-label">Sort By:</span>
+              <select [(ngModel)]="selectedSortOption" (change)="sortTable()" class="sort-select">
+                <option value="projectNam">ProjectName</option>
+                <option value="reasons">Reasons</option>
+                <option value="type">Type</option>
+                <option value="division">Division</option>
+                <option value="category">Category</option>
+                <option value="priority">Priority</option>
+                <option value="department">Department</option>
+                <option value="location">Location</option>
+                <option value="status">Status</option>
+              </select>
+
+            </div>
+            
+    
+            
+           
+        </div>
+            <ul *ngFor="let project of filteredProjects | searchFilter: searchKey ">
+             <div class="row justify-content-center mb-1">
+
+                <div class="col-sm-10" id="datacolumn">
+                
+                        <li class="project-heading">
+                            <div class="d-flex justify-content-between">
+                                <span class="heading">{{project.projectName}}</span> &nbsp; &nbsp; <span class="pjstatus">{{project.status}}</span> <br> 
+                            </div>
+                            <small class="date-data">{{project?.start_date_as_per_project_plan | date:'MMMM-dd, yyyy'}} to {{project?.end_date_as_per_project_plan | date:'MMMM-dd, yyyy' }} </small> 
+                        
+                        </li>
+                        <li class="list-item"><span>Reasons:&nbsp;</span> <span class="binded-data">{{project.reasons}}</span> </li>
+                        <li class="list-item"><span>Type:&nbsp;</span> <span class="binded-data">{{project.type}}</span> &nbsp;&#x25cf; <span>Category:&nbsp;</span> <span class="binded-data">{{project.category}}</span></li>
+                        <li class="list-item">
+                          <span>Div:&nbsp;</span>  <span class="binded-data">{{project.division}}</span> &nbsp; &#x25cf; <span>Dept:&nbsp;</span>
+                            <span class="binded-data">{{project.department}}</span>
+                        </li>
+                        <li class="list-item"><span>Location:&nbsp;</span> <span class="binded-data">{{project.location}}</span></li>
+                        <li class="list-item mb-2"> <span>Priority:&nbsp;</span> <span class="binded-data">{{project.priority}}</span></li>
+
+                        <div class="d-flex flex-row mb-1 justify-content-between">
+                        <div class="onclickobtn">
+                            <button type="button" (click)="updateStatus(project.id, project.projectName,project.reasons,project.type, project.division,project.category,project.priority,project.department,project.start_date_as_per_project_plan, project.end_date_as_per_project_plan, project.location ,project.status, 'Running')" class="btn" id="start-button">
+                            Start
+                          </button>
+                        </div>
+
+                        <div class="onclickobtn">
+                            <button type="button" (click)="updateStatus(project.id, project.projectName,project.reasons,project.type, project.division,project.category,project.priority,project.department,project.start_date_as_per_project_plan, project.end_date_as_per_project_plan, project.location ,project.status, 'Closed')" class="btn" id="close-button">
+                            Close
+                          </button>
+                        </div>
+
+                        <div class="onclickobtn">
+                            <button type="button" (click)="updateStatus(project.id, project.projectName,project.reasons,project.type, project.division,project.category,project.priority,project.department,project.start_date_as_per_project_plan, project.end_date_as_per_project_plan, project.location ,project.status, 'cancelled')" class="btn" id="cancel-button">
+                            Cancel
+                          </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            </ul>
+            
+        </div>
+        
+
+
+   
+      
+    
+</div>
+
+
+
+    <!-- mobilemenu-bar -->
+    <div class="row justify-content-evenly fixed-bottom" id="mobile-menubar">
+        <div class="col-3 text-center">
+            <img src="../assets/images/Dashboard-active.png" (click)="gotoHome()" class="img-fluid" alt="">
+        </div>
+        <div class="col-3 text-center">
+            <img src="../assets/images/Project-list-active.png" (click)="gotoList()" class="img-fluid" alt="">
+        </div>
+        <div class="col-3 text-center">
+            <img src="../assets/images/create-project.png" (click)="gotoCreateProject()" class="img-fluid" alt="">
+        </div>
+    </div>

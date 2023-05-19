@@ -1,0 +1,251 @@
+<img
+  src="../assets/images/Header-bg.png"
+  class="img-fluid"
+  id="header-background"
+  alt=""
+/>
+<h5 id="dashboard-heading">
+  <img
+    src="../assets/images/back arrow.png"
+    (click)="gotoList()"
+    class="back-arrow img-fluid"
+    [routerLink]="['project-list']"
+  />
+  Create Project
+</h5>
+<!-- <div class="row"> -->
+<!-- <div class="col-sm-6"> -->
+<!-- </div> -->
+<div class="d-none d-md-block">
+  <img
+    src="../assets/images/Logo.png"
+    id="project-logo"
+    class="img-fluid"
+    alt=""
+  />
+</div>
+
+<!-- logout for mobile view -->
+<div class="logoutimg">
+  <img src="../assets/images/Logout.png" class="logout-click" (click)="signOut()" alt="">
+</div>
+
+<div class="side-bar d-none d-sm-block">
+  <ul>
+    <div class="side-icon">
+      <li class="sidebar-menu">
+        <img
+          src="../assets/images/Dashboard.png"
+          class="img-fluid"
+          id="img-dashboard"
+          (click)="gotoHome()"
+          alt=""
+        />
+      </li>
+    </div>
+    <div class="side-icon">
+      <li class="sidebar-menu">
+        <img
+          src="../assets/images/Project-list.png"
+          class="img-fluid"
+          alt=""
+          (click)="gotoList()"
+        />
+      </li>
+    </div>
+    <div class="side-icon">
+      <li class="sidebar-menu">
+        <img
+          src="../assets/images/create-project.png"
+          class="img-fluid"
+          (click)="gotoCreateProject()"
+          alt=""
+        />
+      </li>
+    </div>
+    <div id="horizontal-line">line</div>
+    <div class="side-icon">
+      <li>
+        <img
+          src="../assets/images/Logout.png"
+          id="logout-logo"
+          class="img-fluid"
+          alt=""
+          (click)="signOut()"
+        />
+      </li>
+    </div>
+  </ul>
+</div>
+
+
+
+<!-- container-fluid -->
+
+<div class="container-fluid">
+
+  <div class="card">
+    <div
+      class="row mb-4"
+      id="add-form"
+    >
+      <div class="col-lg-10">
+    <form [formGroup]="addProjectForm">
+        <input
+          type="text"
+          class="form-control"
+          id="addproject-input"
+          placeholder="Enter Project Theme"
+          aria-label="First name"
+          formControlName="projectName"
+        />
+        <small *ngIf="addProjectForm.controls['projectName'].dirty && addProjectForm.hasError('required', 'projectName')" class="text-danger">*Project name is required</small>
+        
+        <div class="row mt-2">
+          <div class="col-lg-4 col-11 mb-3">
+            <label for="exampleInputEmail1" class="form-label">Reason</label>
+          
+            <select class="form-select" formControlName="reasons" aria-label="Default select example">
+              <option selected>Bussiness</option>
+              <option value="Dealership">Dealership</option>
+              <option value="Personal">Personal</option>
+              <option value="Transport">Transport</option>
+            </select>
+            <span *ngIf="addProjectForm.controls['reasons'].dirty && addProjectForm.hasError('required', 'reasons')" class="text-danger">*required field</span>
+          </div>
+
+
+          <div class="col-lg-4 col-11 mb-3">
+            <label for="exampleInputEmail1" class="form-label">Type</label>
+
+            <select class="form-select" formControlName="type" aria-label="Default select example">
+              <option value="Internal">Internal</option>
+              <option value="External">External</option>
+              <option value="Vendor">Vendor</option>
+              <option value="Three">Three</option>
+            </select>
+            <span *ngIf="addProjectForm.controls['type'].dirty && addProjectForm.hasError('required', 'type')" class="text-danger">*required field</span>
+          </div>
+          <div class="col-lg-4 col-11 mb-">
+            <label for="exampleInputEmail1" class="form-label">Division</label>
+           
+            <select class="form-select" formControlName="division" aria-label="Default select example">
+              <option value="Compressor">Compressor</option>
+              <option value="Filters">Filters</option>
+              <option value="Filters2">Filters2</option>
+              <option value="Pumps">Pumps</option>
+              <option value="Glass">Glass</option>
+              <option value="Water Heater">Water Heater</option>
+            </select>
+            <span *ngIf="addProjectForm.controls['division'].dirty && addProjectForm.hasError('required', 'division')" class="text-danger">*required field</span>
+            
+          </div>
+         
+          <div class="col-lg-4 col-11 mb-3">
+            <label for="exampleInputEmail1" class="form-label">Category</label>
+            
+            <select class="form-select" formControlName="category" aria-label="Default select example">
+              <option value="Quality A">Quality A</option>
+              <option value="Quality B">Quality B</option>
+              <option value="Quality C">Quality C</option>
+              <option value="Quality D">Quality D</option>
+            </select>
+            <span *ngIf="addProjectForm.controls['category'].dirty && addProjectForm.hasError('required', 'category')" class="text-danger">*required field</span>
+          </div>
+          <div class="col-lg-4 col-11 mb-3">
+            <label for="exampleInputEmail1" class="form-label">Priority</label>
+            <select class="form-select" formControlName="priority" aria-label="Default select example">
+              <option value="High">High</option>
+              <option value="Low">Low</option>
+              <option value="Two">Medium</option>
+              <option value="Average">Average</option>
+            </select>
+            <span *ngIf="addProjectForm.controls['priority'].dirty && addProjectForm.hasError('required', 'priority')" class="text-danger">*required field</span>
+          </div>
+          <div class="col-lg-4 col-11 mb-3">
+            <label for="exampleInputEmail1" class="form-label">Department</label>
+            <select class="form-select" formControlName="department" aria-label="Default select example">
+              <option value="Stratergy">Stratergy</option>
+              <option value="HR">HR</option>
+              <option value="Financial">Financial</option>
+              <option value="Quality">Quality</option>
+              <option value="Stores">Stores</option>
+              <option value="Maintainance">Maintenance</option>
+
+            </select>
+            <span *ngIf="addProjectForm.controls['department'].dirty && addProjectForm.hasError('required', 'department')" class="text-danger">*required field</span>
+          </div>
+        
+          <div class="col-lg-4 col-11 mb-3">
+            <label for="exampleInputEmail1" class="form-label">Start Date as per Project Plan</label>
+            <input
+              type="date"
+              name="begin" 
+              placeholder="D Month, Yr"
+              class="form-control"
+              aria-label="Last name"
+              formControlName="start_date_as_per_project_plan" 
+            />
+            <span *ngIf="addProjectForm.controls['start_date_as_per_project_plan'].dirty && addProjectForm.hasError('required', 'start_date_as_per_project_plan')" class="text-danger">*required field</span>
+          </div>
+          
+          <div class="col-lg-4 col-11 mb-3">
+            <label for="exampleInputEmail1" class="form-label">End Date as per Project Plan</label>
+            <input
+              type="date"
+              class="form-control"
+              placeholder="Last name"
+              aria-label="Last name"
+              formControlName="end_date_as_per_project_plan" 
+            />
+            
+            <span *ngIf="addProjectForm.controls['end_date_as_per_project_plan'].dirty && addProjectForm.hasError('required', 'end_date_as_per_project_plan')" class="text-danger">*required field</span>
+          </div>
+          <div class="col-lg-4 col-11 mb-3">
+            <label for="exampleInputEmail1" class="form-label">Location</label>
+            <select class="form-select" formControlName="location" aria-label="Default select example">
+              <option value="Pune">Pune</option>
+              <option value="Mumbai">Mumbai</option>
+              <option value="Chennai">Chennai</option>
+              <option value="Delhi">Delhi</option>
+            </select>
+            <span *ngIf="addProjectForm.controls['location'].dirty && addProjectForm.hasError('required', 'location')" class="text-danger">*required field</span>
+
+            <div class="bydefault-status mt-4">
+              <p>status: <span style="font-weight: 700;">Registered</span></p>
+            </div>
+          </div>
+        
+        </div>
+    </form>
+
+      </div>
+      <div class="col-lg-2">
+        <button class="btn" (click)="onSubmit()" id="projectsave-button">Save Project</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- mobilemenu-bar -->
+  <div class="row justify-content-evenly fixed-bottom"id="mobile-menubar">
+    <div class="col-3 text-center">
+      <img
+        src="../assets/images/Dashboard-active.png"
+        class="img-fluid"
+        (click)="gotoHome()"
+        alt=""
+      />
+    </div>
+    <div class="col-3 text-center">
+      <img
+        src="../assets/images/Project-list-active.png"
+        class="img-fluid"
+        (click)="gotoList()"
+        alt=""
+      />
+    </div>
+    <div class="col-3 text-center">
+      <img src="../assets/images/create-project.png" (click)="gotoCreateProject()" class="img-fluid" alt="" />
+    </div>
+  </div>
+</div>
